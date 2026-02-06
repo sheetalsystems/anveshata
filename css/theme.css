@@ -1,0 +1,217 @@
+/* Default Light Theme (applied if no class or checkbox unchecked) */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.sidebar {
+    background-color: #f7f7f7;
+    border-right-color: #ddd;
+}
+
+.new-chat-button button {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+.new-chat-button button::before {
+    color: #333;
+}
+
+.chat-history-item {
+    color: #333;
+}
+
+.chat-history-item:hover {
+    background-color: #eee;
+}
+
+.sidebar-bottom {
+    border-top-color: #ddd;
+}
+
+.user-info,
+.settings {
+    color: #333;
+}
+
+.user-info:hover,
+.settings:hover {
+    background-color: #eee;
+}
+
+.main-content {
+    background-color: #fff;
+}
+
+.input-area {
+    background-color: #f7f7f7;
+    border-top-color: #ddd;
+}
+
+.prompt-input {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+.prompt-input::placeholder {
+    color: #777;
+}
+
+.user-message {
+    background-color: #e6f7ff;
+    color: #333;
+}
+
+.bot-message {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Dark Theme (applied when body has the 'dark-theme' class or checkbox checked) */
+body.dark-theme {
+    background-color: #343541;
+    color: #d1d5db;
+}
+
+.sidebar.dark-theme {
+    background-color: #202123;
+    border-right-color: #343541;
+}
+
+.new-chat-button.dark-theme button {
+    background-color: #343541;
+    color: #fff;
+    border-color: #555;
+}
+
+.new-chat-button.dark-theme button::before {
+    color: #fff;
+}
+
+.chat-history.dark-theme .chat-history-item {
+    color: #d1d5db;
+}
+
+.chat-history.dark-theme .chat-history-item:hover {
+    background-color: #343541;
+}
+
+.sidebar-bottom.dark-theme {
+    border-top-color: #343541;
+}
+
+.user-info.dark-theme,
+.settings.dark-theme {
+    color: #d1d5db;
+}
+
+.user-info.dark-theme:hover,
+.settings.dark-theme:hover {
+    background-color: #343541;
+}
+
+.main-content.dark-theme {
+    background-color: #434654;
+}
+
+.input-area.dark-theme {
+    background-color: #202123;
+    border-top-color: #343541;
+}
+
+.prompt-input.dark-theme {
+    background-color: #40414f;
+    color: #fff;
+    border-color: #555;
+}
+
+.prompt-input.dark-theme::placeholder {
+    color: #8e8ea0;
+}
+
+.user-message.dark-theme {
+    background-color: #4a8eff;
+    color: #fff;
+}
+
+.bot-message.dark-theme {
+    background-color: #434654;
+    color: #d1d5db;
+}
+
+/* Theme Toggle Styling */
+.theme-toggle {
+    padding: 15px;
+    border-bottom: 1px solid #343541;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.theme-toggle input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.theme-label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 26px;
+    background: #bbb;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.theme-label:after {
+    position: absolute;
+    content: '';
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.theme-toggle input:checked + .theme-label {
+    background: #2196F3;
+}
+
+.theme-toggle input:checked + .theme-label:after {
+    left: calc(100% - 3px);
+    transform: translateX(-100%);
+}
+
+.theme-label i {
+    position: absolute;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.theme-label .fa-sun {
+    left: 5px;
+    color: #ff0;
+}
+
+.theme-label .fa-moon {
+    right: 5px;
+    color: #eee;
+    opacity: 0;
+}
+
+.theme-toggle input:checked + .theme-label .fa-sun {
+    opacity: 0;
+}
+
+.theme-toggle input:checked + .theme-label .fa-moon {
+    opacity: 1;
+}

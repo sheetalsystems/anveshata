@@ -1,0 +1,14 @@
+Flask 
+PyPDF2 
+python-docx 
+google-generativeai
+pytesseract
+pdf2image
+reportlab
+numpy
+flask_cors
+msgraph-sdk
+aiohttp
+sentence_transformers
+uvicorn
+asgiref

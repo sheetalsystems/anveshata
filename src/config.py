@@ -1,31 +1,68 @@
-# src/config.py
+
 import os
+from dotenv import load_dotenv
 from datetime import timedelta
 
-GEN_AI_API_KEY="AIzaSyANy_vhv3t7Q4qzJ82sDzmvlY7f_Ou5RBo"
-GENERATIVE_MODEL="gemini-1.5-flash-002"
-EMBEDDING_MODEL="all-mpnet-base-v2"
+# Load all environment variables from .env file
+load_dotenv(dotenv_path='.env')
 
-# Define the folder where your documents are stored.
-DOCUMENTS_FOLDER = "DocPDFIMG"
 
-# Define the path to the JSON file containing user credentials.
-USERS_JS_PATH = "users.json"
+GEN_AI_API_KEY = os.getenv("GEN_AI_API_KEY")
+GENERATIVE_MODEL = os.getenv("GENERATIVE_MODEL")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
+APP_SECRET_KEY = os.getenv("APP_SECRET_KEY")  # Secret key for Flask app
 
-# Define the token expiry time.
+DOCUMENTS_FOLDER = os.getenv("DocPDFIMG")  # Folder for storing uploaded documents
+USERS_JS_PATH = os.getenv("USERS_JS_PATH")    # Path to JSON file with user data
+
+# Tokens
 TOKEN_EXPIRY = timedelta(days=30)
+TOKEN_FILE = os.getenv("TOKEN_FILE")
+GRAPH_TOKEN_FILE =os.getenv("GRAPH_TOKEN_FILE") 
 
-TOKEN_FILE = "jwt_token.json" 
+# Domain
+DOMAIN_NAME = os.getenv("DOMAIN_NAME")  # Your server/domain for callbacks
 
-GRAPH_TOKEN_FILE = "graph_token.json"
+# OneDrive Auth Settings
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+TENANT_ID = os.getenv("TENANT_ID")
 
-#domain name
-DOMAIN_NAME = "http://www.nbpoc.com:5000"  # Replace with your actual domain name or IP address
+SHAREPOINT_SITE_ID = os.getenv("SHAREPOINT_SITE_ID")
+SHAREPOINT_DRIVE_ID = os.getenv("SHAREPOINT_DRIVE_ID")  # SharePoint drive ID for OneDrive
 
-# OneDrive configuration (replace with your values)
+# OneDrive App Credentials (if using different from above)
+ONED_NAME = os.getenv("ONED_NAME")
+ONED_PASSWORD = os.getenv("ONED_PASSWORD")
+ONED_APP_NAME = os.getenv("ONED_APP_NAME")
+ONED_CLIENT_ID = os.getenv("ONED_CLIENT_ID")
+ONED_TENENT_ID = os.getenv("ONED_TENENT_ID")
+ONED_CLIENT_SECRET = os.getenv("ONED_CLIENT_SECRET")
+ONED_FOLDER_PATH_URL = os.getenv("ONED_FOLDER_PATH_URL")
+ONED_GRAPH_API_URL = os.getenv("ONED_GRAPH_API_URL")
+ONED_DOCUMENT_URL = os.getenv("ONED_DOCUMENT_URL")  # URL to access documents in OneDrive
+ONED_SHAREPOINT_SITE_ID = os.getenv("ONED_SHAREPOINT_SITE_ID")
+ONED_DOCUMENT_URL_QUERY = os.getenv("ONED_DOCUMENT_URL_QUERY" )
 
-#ONEDRIVE_ID = "YOUR_ONEDRIVE_ID"
-#LOCAL_DOCUMENTS_FOLDER = "onedrive_files"
-SHAREPOINT_SITE_ID="systemsp.sharepoint.com,55651af5-6827-4eb9-84d2-09945a4a5ebb,eec0d96e-d69a-46fe-879f-eea1e016263b" # Replace with your SharePoint site ID
+APP_PORT = int(os.getenv("APP_PORT"))  # Default port for the app
+APP_HOST = os.getenv("APP_HOST")  # Default IP for the app
+SSL_KEYFILE = os.getenv('SSL_KEYFILE')
+SSL_CERTFILE = os.getenv('SSL_CERTFILE')
+IS_SECURE = os.getenv('IS_SECURE', 'no').lower() == 'yes'  # Converts to boolean
+CROS_ORIGINS = os.getenv('CROS_ORIGINS', '*')  # CORS origins, default to allow all
 
-#onedrive app password
+
+AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
+REDIRECT_URI = os.getenv("REDIRECT_URI") 
+# SCOPE = ["User.Read"]
+# SCOPE = [
+#     "User.Read",
+#     "Files.Read.All",
+#     "Sites.Read.All"
+# ]
+
+SCOPE = [
+    "User.Read",
+    "Files.ReadWrite.All",
+    "Sites.ReadWrite.All"
+]
